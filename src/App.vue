@@ -1,32 +1,64 @@
 <template>
   <div id="app">
-    <nav>
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </nav>
-    <router-view/>
+    <HelloVue></HelloVue>
+    <MyButton></MyButton>
+    <AddForm></AddForm>
+    <PaymondDisplay></PaymondDisplay>
   </div>
 </template>
 
+<script>
+import {mapGetters} from 'vuex';
+import HelloVue from "./components/HelloVue.vue";
+import AddForm from "./components/AddForm.vue";
+import PaymondDisplay from "./components/PaymondDisplay.vue";
+import MyButton from "./components/MyButton.vue";
+export default {
+    data() {
+        return {
+          cur: 1,
+          n: 5,
+        }
+    },
+    components: { HelloVue, AddForm, PaymondDisplay, MyButton, },
+    methods: {
+      fetchData (){
+        return     [
+                {
+                     date: '28.03.2020',
+                     category: 'Food',
+                     value: 169,
+                },
+                {
+                     date: '24.03.2020',
+                     category: 'Transport',
+                     value: 360,
+                }                ,
+                {
+                     date: '24.03.2020',
+                     category: 'Food',
+                     value: 532,
+                },
+            ]
+
+      },
+      computed: {
+        ...mapGetters(["getPaymentsList"])
+      },
+      fetchCategory(){
+        return ['Food', 'Transport', 'Education', 'Entertainment']
+      }
+    },
+      created() {
+        this.$store.commit('setPaymentsListData', this.fetchData());
+        this.$store.commit('setCategoryList', this.fetchCategory());
+      },
+}
+
+</script>
+
 <style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
 
-nav {
-  padding: 30px;
 
-  a {
-    font-weight: bold;
-    color: #2c3e50;
 
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
-}
 </style>
