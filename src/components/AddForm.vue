@@ -24,6 +24,7 @@ export default {
       methods: {
          onSaveClick (){
             const data = {
+               id: Math.round(Math.random() * 1000),
                date: this.date || this.getData,
                category: this.category,
                value: this.value
@@ -33,18 +34,37 @@ export default {
    },
    computed: {
       getData (){
-            const day = new Date()
-            const d = day.getDate()
-            const m = day.getMonth()+1
-            const y = day.getFullYear()
-            return `${d} ${m} ${y}`
+            let date = (new Date()).toString().split(' ').splice(1,3).join(' ');
+            return date
       },
       CategoryList (){
              return this.$store.getters.getCategoryList
+      },
+   },
+   mounted() {
+
+    const addit = {
+    date:  this.date =  this.getData,
+    category:  this.category =  this.$route.params.category,
+    value: this.value = Number(this.$route.params.value) || ''
+    }
+        if (!this.$route.params.value && !this.$route.params.category){
+            return
+        } else {
+            this.$store.commit("changeShow")
+            setTimeout(()=>{
+              this.$store.commit('addDataToPaymentsList', addit)
+         }, 2000)
       }
-   }
+   },
+   created() {
+      if (this.$route.path === '/'){
+           this.value = 1
+      }
+   },
 }
 </script>
+
 <style lang="scss" scoped>
    input {
       margin-right: 5px

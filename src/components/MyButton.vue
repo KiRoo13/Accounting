@@ -12,7 +12,7 @@ export default {
    },
    methods: {
       oneClick(){
-         this.$store.commit("chenchShow")
+         this.$store.commit("changeShow")
       }
    },
 }

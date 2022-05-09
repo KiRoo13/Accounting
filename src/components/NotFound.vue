@@ -1,16 +1,11 @@
 <template lang="">
    <div>
-      <h2>My personal costs</h2>
+      <h1>404</h1>
    </div>
 </template>
 <script>
 export default {
-   name: "HelloVue",
-   data() {
-      return {
-         
-      }
-   },
+   name: "NotFound"
 }
 </script>
 <style lang="">

@@ -6,6 +6,7 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
+    SortList: [],
     PaymondList: [],
     CategoryList: [],
     show: false
@@ -15,16 +16,25 @@ export default new Vuex.Store({
 
     getCategoryList: state => state.CategoryList,
 
+    getSortList: state => state.SortList,
+
     getFullPaymentValue (state){
           return state.PaymondList.reduce((el, acc)=>{
               return el + acc.value
           }, 0)
     },
-    getShow: state => state.show
+    getShow: state => state.show,
+    getPage (state){
+       let page = state.PaymondList.length
+       return page
+    }
   },
   mutations: {
     setPaymentsListData (state, payload) {
       state.PaymondList = payload;
+    },
+    setSortList (state, payload){
+       state.SortList.push(payload)
     },
     setCategoryList (state, payload){
       state.CategoryList = payload
@@ -33,8 +43,11 @@ export default new Vuex.Store({
     addDataToPaymentsList (state, payload){
       state.PaymondList.push(payload)
     },
-    chenchShow(state){
+    changeShow(state){
       state.show = true
+    },
+    clearSortList(state){
+      state.SortList = []
     }
   },
   actions: {

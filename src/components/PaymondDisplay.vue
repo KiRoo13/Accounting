@@ -1,6 +1,6 @@
 <template lang="">
    <div>
-      <div v-for="item in PaymentsList" :key="item.value">
+      <div v-for="item in PaymentsList" :key="item.id">
       {{ item}}
       </div>
       <strong> Сумма: {{ getSum }} </strong>
@@ -23,7 +23,7 @@ export default {
          return this.$store.getters.getFullPaymentValue
       },
       PaymentsList (){
-         return this.$store.getters.getPaymentsList
+         return this.$store.getters.getSortList
       }
    }
 }

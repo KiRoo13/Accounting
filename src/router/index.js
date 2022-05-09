@@ -1,25 +1,40 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 
+import MyP from '../components/MyP'
+import ProbNik from '../components/ProbNik'
+import NotFound from '../components/NotFound'
+
+
+
 
 Vue.use(VueRouter)
 
 const routes = [
   {
     path: '/',
-    name: 'home',
+    name: 'ProbNik',
+    component: ProbNik
   },
   {
     path: '/about',
-    name: 'about',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    // component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
-  }
+    name: 'MyP',
+    component: MyP
+  },
+  {
+    path: '/add/:date/:category/:value',
+    name: 'AddForm',
+    component: ProbNik
+  },
+  {
+    path: '*',
+    name: 'NotFound',
+    component: NotFound
+  },
 ]
 
 const router = new VueRouter({
+  mode: "history",
   routes
 })
 
