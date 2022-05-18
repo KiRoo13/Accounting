@@ -2,24 +2,29 @@
    <div>
     <HomeVue></HomeVue>
     <MyButton></MyButton>
-    <AddForm></AddForm>
+    <transition name="fade">
+           <ModalWindow :settings="settings" v-if="modalShow"></ModalWindow>
+    </transition>
+           <ContextMenu></ContextMenu>
     <PaymondDisplay></PaymondDisplay>
     <MyPagination></MyPagination>
    </div>
 </template>
 <script>
 
-import AddForm from "../components/AddForm.vue";
 import PaymondDisplay from "../components/PaymondDisplay.vue";
 import MyButton from "../components/MyButton.vue";
 import HomeVue from "../components/HomeVue.vue";
 import MyPagination from '../components/MyPagination.vue';
+import ModalWindow from '../components/ModalWindow.vue'
+import ContextMenu from "../components/ContextMenu";
 export default {
    name: 'ProbNik',
-   components: { AddForm, PaymondDisplay, MyButton, HomeVue, MyPagination },
+   components: {  PaymondDisplay, MyButton, HomeVue, MyPagination, ModalWindow, ContextMenu},
    data (){
      return {
-
+          modalShow: false,
+          settings: {}
      }
    },
        methods: {
@@ -81,14 +86,35 @@ export default {
       },
       fetchCategory(){
         return ['Food', 'Transport', 'Education', 'Entertainment']
+      },
+      onShow(data){
+           this.settings = data
+           this.modalShow = true
+      },
+      onHide(){
+           this.settings = {};
+           this.modalShow = false
       }
     },
       created() {
         this.$store.commit('setPaymentsListData', this.fetchData());
         this.$store.commit('setCategoryList', this.fetchCategory());
       },
+      mounted() {
+          this.$modal.EventBus.$on('show', this.onShow);
+          this.$modal.EventBus.$on('hide', this.onHide)
+      },
+      beforeDestroy() {
+          this.$modal.EventBus.$off('show', this.onShow);
+          this.$modal.EventBus.$off('hide', this.onHide)
+      },
 }
 </script>
-<style lang="">
-   
+<style>
+.fade-enter-active, .fade-leave-active {
+transition: opacity .5s;
+}
+.fade-enter, .fade-leave-to {
+opacity: 0;
+}
 </style>

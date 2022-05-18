@@ -9,7 +9,6 @@ export default new Vuex.Store({
     SortList: [],
     PaymondList: [],
     CategoryList: [],
-    show: false
   },
   getters: {
     getPaymentsList: state => state.PaymondList,
@@ -23,7 +22,6 @@ export default new Vuex.Store({
               return el + acc.value
           }, 0)
     },
-    getShow: state => state.show,
     getPage (state){
        let page = state.PaymondList.length
        return page
@@ -43,8 +41,12 @@ export default new Vuex.Store({
     addDataToPaymentsList (state, payload){
       state.PaymondList.push(payload)
     },
-    changeShow(state){
-      state.show = true
+    removeElem(state, payload){
+            state.SortList.forEach((el, i)=>{
+                 if(el.id === payload){
+                    state.SortList.slice(i, 1)
+                 }
+            })
     },
     clearSortList(state){
       state.SortList = []

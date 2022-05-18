@@ -1,6 +1,6 @@
 <template >
    <div>
-      <div v-if="$store.getters.getShow">
+      <div>
          <input v-model="date" type="text" placeholder="date">
          <select v-model="category">
              <option v-for="category in CategoryList" :key="category">{{category}}</option>
@@ -51,16 +51,13 @@ export default {
         if (!this.$route.params.value && !this.$route.params.category){
             return
         } else {
-            this.$store.commit("changeShow")
             setTimeout(()=>{
-              this.$store.commit('addDataToPaymentsList', addit)
+              this.$store.commit('setSortList', addit)
          }, 2000)
       }
    },
    created() {
-      if (this.$route.path === '/'){
-           this.value = 1
-      }
+
    },
 }
 </script>

@@ -20,34 +20,54 @@ export default {
        changePage(p){
          if (p === 1){
              this.$store.commit('clearSortList')
-             this.$store.commit('setSortList', this.$store.getters.getPaymentsList.slice(0, this.count))
+             this.$store.getters.getPaymentsList.slice(0, this.count).forEach(element => {
+             this.$store.commit('setSortList', element)
+      })
           } else if(p === 2) {
              this.$store.commit('clearSortList')
-             this.$store.commit('setSortList', this.$store.getters.getPaymentsList.slice(3, 6))
+             this.$store.getters.getPaymentsList.slice(3, 6).forEach(element => {
+             this.$store.commit('setSortList', element)
+      })
           }else if(p === 3) {
              this.$store.commit('clearSortList')
-             this.$store.commit('setSortList', this.$store.getters.getPaymentsList.slice(6, 9))
+             this.$store.getters.getPaymentsList.slice(6, 9).forEach(element => {
+             this.$store.commit('setSortList', element)
+      })
           }else if(p === 4) {
              this.$store.commit('clearSortList')
-             this.$store.commit('setSortList', this.$store.getters.getPaymentsList.slice(9, 12))
+             this.$store.getters.getPaymentsList.slice(9, 12).forEach(element => {
+             this.$store.commit('setSortList', element)
+      })
           }else if(p === 5) {
              this.$store.commit('clearSortList')
-             this.$store.commit('setSortList', this.$store.getters.getPaymentsList.slice(12, 15))
+             this.$store.getters.getPaymentsList.slice(12, 15).forEach(element => {
+             this.$store.commit('setSortList', element)
+      })
           }else if(p === 6) {
              this.$store.commit('clearSortList')
-             this.$store.commit('setSortList', this.$store.getters.getPaymentsList.slice(15, 18))
+             this.$store.getters.getPaymentsList.slice(15, 18).forEach(element => {
+             this.$store.commit('setSortList', element)
+      })
           }else if(p === 7) {
              this.$store.commit('clearSortList')
-             this.$store.commit('setSortList', this.$store.getters.getPaymentsList.slice(18, 21))
+             this.$store.getters.getPaymentsList.slice(18, 21).forEach(element => {
+             this.$store.commit('setSortList', element)
+      })
           }else if(p === 8) {
              this.$store.commit('clearSortList')
-             this.$store.commit('setSortList', this.$store.getters.getPaymentsList.slice(21, 24))
+             this.$store.getters.getPaymentsList.slice(21, 24).forEach(element => {
+             this.$store.commit('setSortList', element)
+      })
           }else if(p === 9) {
              this.$store.commit('clearSortList')
-             this.$store.commit('setSortList', this.$store.getters.getPaymentsList.slice(24, 27))
+             this.$store.getters.getPaymentsList.slice(24, 27).forEach(element => {
+             this.$store.commit('setSortList', element)
+      })
           }else if(p === 10) {
              this.$store.commit('clearSortList')
-             this.$store.commit('setSortList', this.$store.getters.getPaymentsList.slice(27, 30))
+             this.$store.getters.getPaymentsList.slice(27, 30).forEach(element => {
+             this.$store.commit('setSortList', element)
+      })
           }
       },
    },
@@ -57,7 +77,9 @@ export default {
       }
    },
    mounted() {
-       this.$store.commit('setSortList', this.$store.getters.getPaymentsList.slice(0, this.count))
+       this.$store.getters.getPaymentsList.slice(0, this.count).forEach(element => {
+          this.$store.commit('setSortList', element)
+      });
    },
 }
 </script>
