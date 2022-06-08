@@ -1,7 +1,7 @@
 <template lang="">
    <div>
-      <button @click="onenModalForm">Add new cost</button>
-      <button class="last" @click="onenModalFormReg">Registration</button>
+      <v-btn color="grey darken-1" @click="onenModalForm">Add new cost <v-icon>mdi-plus</v-icon></v-btn>
+      <v-btn color="grey darken-1"  class="last" @click="onenModalFormReg">Registration</v-btn>
    </div>
 </template>
 <script>

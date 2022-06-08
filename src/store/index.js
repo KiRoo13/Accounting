@@ -42,11 +42,8 @@ export default new Vuex.Store({
       state.PaymondList.push(payload)
     },
     removeElem(state, payload){
-            state.SortList.forEach((el, i)=>{
-                 if(el.id === payload){
-                    state.SortList.slice(i, 1)
-                 }
-            })
+            const i = state.SortList.map(item => item.id).indexOf(payload);
+            state.SortList.splice(i, 1);
     },
     clearSortList(state){
       state.SortList = []

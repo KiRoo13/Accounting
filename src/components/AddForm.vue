@@ -1,19 +1,20 @@
 <template >
-   <div>
+   <v-card class="pa-2" loading>
       <div>
-         <input v-model="date" type="text" placeholder="date">
-         <select v-model="category">
-             <option v-for="category in CategoryList" :key="category">{{category}}</option>
-         </select>
-         <input v-model.number="value" type="text" placeholder="value">
-         <button @click="onSaveClick">Save</button>
+         <v-text-field v-model="date" label="Date"></v-text-field>
+         <v-select v-model="category" label="Category" :items="CategoryList"></v-select>
+         <v-text-field v-model.number="value" label="Value"></v-text-field>
+         <v-btn color="grey darken-1" @click="onSaveClick">Save</v-btn>
       </div>
-   </div>
+   </v-card>
 </template>
 <script>
 
 export default {
    name: "AddForm",
+   props: {
+      item: Object
+   },
    data() {
       return {
          date: "",
@@ -42,7 +43,6 @@ export default {
       },
    },
    mounted() {
-
     const addit = {
     date:  this.date =  this.getData,
     category:  this.category =  this.$route.params.category,
@@ -57,7 +57,7 @@ export default {
       }
    },
    created() {
-
+      
    },
 }
 </script>

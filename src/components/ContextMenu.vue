@@ -26,22 +26,13 @@ export default {
             this.deleteItem(this.items[0].item)
          }
       },
-      editItem(){
-
-          // Остался только метод изменения, не понятно как его реализовать, потому, что пришлось уйти от
-          // той реализации кода, которую показывали на уроке, из-за не выполнения функций в acttions 
-
-          // До конца не понял, как работает EventBus, с модалкой как-то было проще, отсюда вопрос.
-
-          // Зачем использовать EventBus, если у нас есть Vuex, который обечпечивает достут к данным,
-          // из любого места приложения?
+      editItem(item){
+         this.$modal.Show('addform', {component: 'addform', item})
+         // this.editedItem = Object.assign({}, item)
       },
 
       deleteItem(item){
              this.$store.commit('removeElem', item.id)
-             // Не срабатывает commit не понятно почему, все проверил, все данные приходят, 
-             // но состояние state не меняется. Подскажите, что не так ?
-             // По сути, метод реализован.
       },
       onShow(items){
        this.items = items
@@ -69,10 +60,11 @@ export default {
       align-items: center;
       height: 50px;
       width: 100px;
-      left: 65%;
+      left: 45%;
+      top: 20%;
       position: absolute;
       border-radius: 10px;
-      background-color: rgb(169, 174, 174);
+      box-shadow: 0px 3px 1px -2px rgb(0 0 0 / 20%), 0px 2px 2px 0px rgb(0 0 0 / 14%), 0px 1px 5px 0px rgb(0 0 0 / 12%);;
    }
    .context__list {
       margin: 0 auto;

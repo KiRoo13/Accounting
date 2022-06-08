@@ -1,18 +1,36 @@
 <template lang="">
-   <div class="list">
-      <div v-for="item in SortList" :key="item.id">
-      {{ item }} <div class="cursor" @click="openMenu(item)">...</div>
-      </div>
-      <strong> Сумма: {{ getSum }} </strong>
-   </div>
+   <v-container class="mt-3">
+      <v-row>
+         <v-col>#</v-col>
+         <v-col>Date</v-col>
+         <v-col>Caterory</v-col>
+         <v-col>Value</v-col>
+         <v-col>Actions</v-col>
+      </v-row>
+      <v-row v-for="item in SortList" :key="item.id">
+         <v-col>{{ item.id }}</v-col>
+         <v-col>{{ item.date }}</v-col>
+         <v-col>{{ item.category }}</v-col>
+         <v-col>{{ item.value }}</v-col>
+         <v-col class="corsor" @click="openMenu(item)"><v-icon>{{ icons.mdiShareVariant }}</v-icon></v-col>
+      </v-row>
+       <div class="list">
+          <strong> Сумма: {{ getSum }} </strong>
+       </div>
+   </v-container>
 </template>
 <script>
+  import {
+    mdiShareVariant,
+   } from '@mdi/js'
 
 export default {
    name: "PaymondDisplay",
    data() {
       return {
-        
+      icons: {
+        mdiShareVariant
+      },
       }
    },
    methods: {
@@ -21,7 +39,7 @@ export default {
                {text: 'Edit', item: item},
                {text: 'Delete', item: item}
             ]
-            this.$contextMenu.Show(items)
+            this.$contextMenu.Show(items) 
          }
    },
    computed: {

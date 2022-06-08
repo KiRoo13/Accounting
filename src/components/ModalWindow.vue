@@ -4,7 +4,7 @@
          <div class="wrapper__top">
             <h3>{{ settings.title }}</h3>
             <AuthForm v-if="settings.component ==='auth'"></AuthForm>
-            <AddForm v-if="settings.component ==='addform'"></AddForm>
+            <AddForm  v-if="settings.component ==='addform'"></AddForm>
          </div>
            <div class="wrapper__buttom">
             <button @click="Hide">Close</button>
@@ -14,21 +14,23 @@
 </template>
 <script>
 import AddForm from "./AddForm.vue";
-import AuthForm from "./AuthForm.vue";
+// import AuthForm from "./AuthForm.vue";
 export default {
     name: "ModalWindow",
+    components: { AddForm },
     props: {
        settings: Object
     },
     data() {
-        return {};
+        return {
+           item: ''
+        };
     },
     methods: {
        Hide (){
            this.$modal.Hide()
-       }
-    },
-    components: { AddForm, AuthForm }
+         },
+      },
 }
 </script>
 <style >
