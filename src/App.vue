@@ -1,64 +1,36 @@
 <template>
-  <div id="app">
-    <HelloVue></HelloVue>
-    <MyButton></MyButton>
-    <AddForm></AddForm>
-    <PaymondDisplay></PaymondDisplay>
-  </div>
+  <v-app>
+    <v-app-bar
+      app
+      color="grey darken-4"
+      >
+      <v-btn
+       to="/about"
+       
+      >
+       About
+      </v-btn>
+      <v-btn
+       to="/"
+       class="ml-2"
+      >
+       Main
+      </v-btn>
+    </v-app-bar>
+
+    <v-main>
+      <router-view/>
+    </v-main>
+  </v-app>
 </template>
 
 <script>
-import {mapGetters} from 'vuex';
-import HelloVue from "./components/HelloVue.vue";
-import AddForm from "./components/AddForm.vue";
-import PaymondDisplay from "./components/PaymondDisplay.vue";
-import MyButton from "./components/MyButton.vue";
+
 export default {
-    data() {
-        return {
-          cur: 1,
-          n: 5,
-        }
-    },
-    components: { HelloVue, AddForm, PaymondDisplay, MyButton, },
-    methods: {
-      fetchData (){
-        return     [
-                {
-                     date: '28.03.2020',
-                     category: 'Food',
-                     value: 169,
-                },
-                {
-                     date: '24.03.2020',
-                     category: 'Transport',
-                     value: 360,
-                }                ,
-                {
-                     date: '24.03.2020',
-                     category: 'Food',
-                     value: 532,
-                },
-            ]
+  name: 'App',
 
-      },
-      computed: {
-        ...mapGetters(["getPaymentsList"])
-      },
-      fetchCategory(){
-        return ['Food', 'Transport', 'Education', 'Entertainment']
-      }
-    },
-      created() {
-        this.$store.commit('setPaymentsListData', this.fetchData());
-        this.$store.commit('setCategoryList', this.fetchCategory());
-      },
-}
-
+  data: () => ({
+    //
+  }),
+};
 </script>
-
-<style lang="scss">
-
-
-
-</style>

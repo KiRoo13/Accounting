@@ -1,6 +1,7 @@
 <template lang="">
    <div>
-      <button @click="oneClick">Add new cost</button>
+      <v-btn color="grey darken-1" @click="onenModalForm">Add new cost <v-icon>mdi-plus</v-icon></v-btn>
+      <v-btn color="grey darken-1"  class="last" @click="onenModalFormReg">Registration</v-btn>
    </div>
 </template>
 <script>
@@ -11,12 +12,17 @@ export default {
       }
    },
    methods: {
-      oneClick(){
-         this.$store.commit("chenchShow")
+      onenModalForm(){
+         this.$modal.Show('addform', {title: 'Add form', component: 'addform'})
+      },
+      onenModalFormReg (){
+         this.$modal.Show('auth', {title: 'Registration Form', component: 'auth'})
       }
    },
 }
 </script>
-<style lang="">
-   
+<style>
+button:last-child{
+   margin-left: 10px;
+}
 </style>

@@ -1,11 +1,13 @@
-<template lang="">
+<template>
    <div>
-      <h2>My personal costs</h2>
+      <div>
+         <h2>Registration Form</h2>
+         <p>Name</p>
+      </div>
    </div>
 </template>
 <script>
 export default {
-   name: "HelloVue",
    data() {
       return {
          
@@ -13,6 +15,6 @@ export default {
    },
 }
 </script>
-<style lang="">
+<style>
    
 </style>
