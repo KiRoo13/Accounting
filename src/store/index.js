@@ -11,6 +11,7 @@ export default new Vuex.Store({
     CategoryList: [],
   },
   getters: {
+
     getPaymentsList: state => state.PaymondList,
 
     getCategoryList: state => state.CategoryList,

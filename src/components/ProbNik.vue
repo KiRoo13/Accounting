@@ -5,11 +5,12 @@
                   <HomeVue></HomeVue>
                   <v-dialog width="500">
                      <template #activator="{ on }">
-                        <v-btn v-on="on" color="grey darken-1"  class="last ml-2" @click="onenModalFormReg">Registration</v-btn>
-                        <v-btn v-on="on" color="grey darken-1" @click="onenModalForm">Add new cost <v-icon>mdi-plus</v-icon></v-btn>
+                        <v-btn v-on="on" color="grey darken-1" class="ml-2">Registration</v-btn>
+                        <v-btn v-on="on" color="grey darken-1">Add new cost <v-icon>mdi-plus</v-icon></v-btn>
                      </template>
                      <v-card>
                         <AddForm></AddForm>
+                        <!-- Как сделать условие, что бы при клике на кнопку Registration, открывалась форма регистрвции --> 
                      </v-card>
                   </v-dialog>
                   <PaymondDisplay></PaymondDisplay>
@@ -28,13 +29,21 @@ import PaymondDisplay from "../components/PaymondDisplay.vue";
 import HomeVue from "../components/HomeVue.vue";
 import MyPagination from '../components/MyPagination.vue';
 import ContextMenu from "../components/ContextMenu";
+
+
+
+
+
 export default {
    name: 'ProbNik',
-   components: {  PaymondDisplay, HomeVue, MyPagination, ContextMenu, AddForm},
+   components: {  PaymondDisplay, HomeVue, MyPagination, ContextMenu, AddForm, },
+ 
    data (){
      return {
           modalShow: false,
-          settings: {}
+          settings: {},
+
+
      }
    },
        methods: {
@@ -95,7 +104,7 @@ export default {
 
       },
       fetchCategory(){
-        return ['Food', 'Transport', 'Education', 'Entertainment']
+        return ['Food', 'Transport', 'Education', 'Entertainment', 'Sport']
       },
       onShow(data){
            this.settings = data
@@ -105,12 +114,12 @@ export default {
            this.settings = {};
            this.modalShow = false
       },
-     onenModalForm(){
-         this.$modal.Show('addform', {title: 'Add form', component: 'addform'})
-      },
-      onenModalFormReg (){
-         this.$modal.Show('auth', {title: 'Registration Form', component: 'auth'})
-      }
+     // onenModalForm(){
+     //     this.$modal.Show('addform', {title: 'Add form', component: 'addform'})
+     //  },
+     //  onenModalFormReg (){
+     //     this.$modal.Show('auth', {title: 'Registration Form', component: 'auth'})
+     //  }
     },
       created() {
         this.$store.commit('setPaymentsListData', this.fetchData());
@@ -127,10 +136,5 @@ export default {
 }
 </script>
 <style>
-.fade-enter-active, .fade-leave-active {
-transition: opacity .5s;
-}
-.fade-enter, .fade-leave-to {
-opacity: 0;
-}
+
 </style>

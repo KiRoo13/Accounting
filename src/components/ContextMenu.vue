@@ -2,16 +2,25 @@
    <div>
       <transition name="fade">
          <div v-if="shown" class="context">
-             <div v-for="item in items" :key="item.text" @click="onClick">{{ item.text }}</div>
+             <div @click="onClick">Delete</div>
+            <v-dialog width="500">
+            <template #activator="{ on }">
+               <div v-on="on">Edit</div>
+            </template>
+            <v-card>
+               <AddForm></AddForm>
+            </v-card>
+         </v-dialog>
          </div>
       </transition>
    </div>
 </template>
 <script>
-
+import AddForm from './AddForm.vue'
 
 export default {
    name: 'ContextMenu',
+   components: { AddForm },
    data() {
       return {
          shown: false,
@@ -27,7 +36,7 @@ export default {
          }
       },
       editItem(item){
-         this.$modal.Show('addform', {component: 'addform', item})
+         console.log(item)
          // this.editedItem = Object.assign({}, item)
       },
 

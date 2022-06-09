@@ -39,7 +39,9 @@ export default {
                {text: 'Edit', item: item},
                {text: 'Delete', item: item}
             ]
-            this.$contextMenu.Show(items) 
+            this.$contextMenu.Show(items)
+            // Не понимаю, какое тут написать условие, что бы при повторном клике вызывать this.$contextMenu.Hide()
+            // и меню закрывалось
          }
    },
    computed: {

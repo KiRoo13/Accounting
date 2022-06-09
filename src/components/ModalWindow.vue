@@ -14,7 +14,7 @@
 </template>
 <script>
 import AddForm from "./AddForm.vue";
-// import AuthForm from "./AuthForm.vue";
+
 export default {
     name: "ModalWindow",
     components: { AddForm },
